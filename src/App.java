@@ -1,9 +1,8 @@
 import java.awt.EventQueue;
-
 import vista.CalculadoraUi;
 
 public class App {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
