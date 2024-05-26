@@ -29,6 +29,9 @@ public class CalculadoraUi {
         frame.setBounds(100, 100, 450, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
+        frame.setLocationRelativeTo(null);
+
+        
 
         JLabel lblOperando1 = new JLabel("Operando 1");
         lblOperando1.setBounds(10, 11, 86, 14);
