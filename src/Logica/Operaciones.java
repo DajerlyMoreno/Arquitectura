@@ -41,7 +41,7 @@ public class Operaciones {
     public static int[] divide(int a, int b) {
         int quotient = a / b;
         int remainder = a % b;
-        return new int[] { quotient, remainder };
+        return new int[]{quotient, remainder};
     }
 
     public static int leftShift(int a) {

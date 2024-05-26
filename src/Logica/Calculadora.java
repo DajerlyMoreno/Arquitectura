@@ -46,6 +46,16 @@ public class Calculadora {
         resultadoBinario = Operaciones.toBinaryString(resultadoDecimal, Operaciones.BITS);
     }
 
+    public void extensionDeCeros() {
+        resultadoDecimal = Operaciones.zeroExtend(operando1, Operaciones.BITS);
+        resultadoBinario = Operaciones.toBinaryString(resultadoDecimal, Operaciones.BITS);
+    }
+
+    public void extensionDeSigno() {
+        resultadoDecimal = Operaciones.signExtend(operando1, Operaciones.BITS);
+        resultadoBinario = Operaciones.toBinaryString(resultadoDecimal, Operaciones.BITS);
+    }
+
     public String getResultadoBinario() {
         return resultadoBinario;
     }
