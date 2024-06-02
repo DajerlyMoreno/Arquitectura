@@ -14,6 +14,14 @@ public class Calculadora {
         this.operando2 = operando2;
     }
 
+    public int operadorADecimal(String op1) {
+        return Operaciones.fromBinaryString(op1);
+    }
+
+    public String operadorABinario(int num) {
+        return Operaciones.toBinaryString(num, Operaciones.BITS);
+    }
+
     public void sumar() throws ArithmeticException {
         resultadoDecimal = Operaciones.add(operando1, operando2);
         resultadoBinario = Operaciones.toBinaryString(resultadoDecimal, Operaciones.BITS);
@@ -26,7 +34,7 @@ public class Calculadora {
 
     public void multiplicar() {
         long resultado = Operaciones.multiply(operando1, operando2);
-        resultadoBinario = Long.toBinaryString(resultado);
+        resultadoBinario = String.format("%32s", Long.toBinaryString(resultado)).replace(' ', '0');
         resultadoDecimal = (int) resultado;  // Simplificación para propósitos de este ejemplo
     }
 
@@ -37,22 +45,22 @@ public class Calculadora {
     }
 
     public void desplazarIzquierda() {
-        resultadoDecimal = Operaciones.leftShift(operando1);
+        resultadoDecimal = Operaciones.leftShift(resultadoDecimal);
         resultadoBinario = Operaciones.toBinaryString(resultadoDecimal, Operaciones.BITS);
     }
 
     public void desplazarDerecha() {
-        resultadoDecimal = Operaciones.rightShift(operando1);
+        resultadoDecimal = Operaciones.rightShift(resultadoDecimal);
         resultadoBinario = Operaciones.toBinaryString(resultadoDecimal, Operaciones.BITS);
     }
 
     public void extensionDeCeros() {
-        resultadoDecimal = Operaciones.zeroExtend(operando1, Operaciones.BITS);
-        resultadoBinario = Operaciones.toBinaryString(resultadoDecimal, Operaciones.BITS);
+        operando1 = Operaciones.zeroExtend(operando1, Operaciones.BITS);
+        operando2 = Operaciones.zeroExtend(operando2, Operaciones.BITS);
     }
 
     public void extensionDeSigno() {
-        resultadoDecimal = Operaciones.signExtend(operando1, Operaciones.BITS);
+        resultadoDecimal = Operaciones.signExtend(resultadoDecimal, Operaciones.BITS);
         resultadoBinario = Operaciones.toBinaryString(resultadoDecimal, Operaciones.BITS);
     }
 
@@ -62,5 +70,13 @@ public class Calculadora {
 
     public int getResultadoDecimal() {
         return resultadoDecimal;
+    }
+
+    public int getOperando1() {
+        return operando1;
+    }
+
+    public int getOperando2() {
+        return operando2;
     }
 }
