@@ -60,8 +60,8 @@ public class Calculadora {
     }
 
     public void extensionDeSigno() {
-        resultadoDecimal = Operaciones.signExtend(resultadoDecimal, Operaciones.BITS);
-        resultadoBinario = Operaciones.toBinaryString(resultadoDecimal, Operaciones.BITS);
+        operando1 = Operaciones.signExtend(operando1, Operaciones.BITS);
+        operando2 = Operaciones.signExtend(operando2, Operaciones.BITS);
     }
 
     public String getResultadoBinario() {

@@ -64,15 +64,10 @@ public class Operaciones {
     }
 
     public static int zeroExtend(int num, int bits) {
-        return num & ((1 << bits) - 1); 
+        return num << bits; 
     }
 
     public static int signExtend(int num, int bits) {
-        int mask = 1 << (bits - 1);
-        num = num & ((1 << bits) - 1); 
-        if ((num & mask) != 0) { 
-            num |= ~((1 << bits) - 1);
-        }
-        return num;
+        return num & ((1 << bits) - 1); 
     }
 }

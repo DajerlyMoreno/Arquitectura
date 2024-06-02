@@ -189,12 +189,9 @@ public class CalculadoraUi {
             int operando1 = comboBoxModo.getSelectedItem().equals("Binario") 
                             ? calculadora.operadorADecimal(textOperando1.getText()) 
                             : Integer.parseInt(textOperando1.getText());
-            int operando2 = 0;
-            if (!operacion.equals("extensionDeCeros") && !operacion.equals("extensionDeSigno")) {
-                operando2 = comboBoxModo.getSelectedItem().equals("Binario") 
+            int operando2 = comboBoxModo.getSelectedItem().equals("Binario") 
                             ? calculadora.operadorADecimal(textOperando2.getText()) 
                             : Integer.parseInt(textOperando2.getText());
-            }
     
             // Actualizar los campos inversos
             if (comboBoxModo.getSelectedItem().equals("Binario")) {
@@ -249,7 +246,11 @@ public class CalculadoraUi {
                     }
                     break;
                 case "extensionDeSigno":
-                    calculadora.extensionDeSigno();
+                    if (comboBoxModo.getSelectedItem().equals("Binario")) {
+                        calculadora.extensionDeSigno();
+                        textOperando1.setText(calculadora.operadorABinario(calculadora.getOperando1()));
+                        textOperando2.setText(calculadora.operadorABinario(calculadora.getOperando2()));
+                    }
                     break;
             }
         } catch (NumberFormatException e) {
