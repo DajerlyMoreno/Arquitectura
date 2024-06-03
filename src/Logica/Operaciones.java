@@ -5,23 +5,39 @@ public class Operaciones {
     public static final int MAX_VALUE = (1 << (BITS - 1)) - 1;
     public static final int MIN_VALUE = -(1 << (BITS - 1));
 
-    public static String toBinaryString(int value, int bits) {
-        String binary = Integer.toBinaryString(value);
-        if (value >= 0) {
-            return String.format("%" + bits + "s", binary).replace(' ', '0');
+    public static String toBinaryString(int num, int bits) {
+        String binario = Integer.toBinaryString(num);
+        if (num >= 0) {
+            // Si el número es positivo, añadir ceros a la izquierda
+            while (binario.length() < bits) {
+                binario = "0" + binario;
+            }
         } else {
-            return binary.substring(binary.length() - bits);
+            // Si el número es negativo, añadir unos a la izquierda para completar el tamaño de bits
+            binario = binario.substring(binario.length() - bits);
         }
+        return binario;
     }
 
-    public static int fromBinaryString(String binary) {
-        return (int) Long.parseLong(binary, 2);
+    public static String toBinaryS(String binario, int bits) {
+        binario = String.format("%" + bits + "s", binario).replace(' ', '0');
+        return binario;
     }
+    
+
+    public static int fromBinaryString(String binary) {
+        if (binary.charAt(0) == '1') { 
+            return -((1 << (binary.length() - 1)) - Integer.parseInt(binary.substring(1), 2));
+        } else {  
+            return Integer.parseInt(binary, 2);
+        }
+    }
+    
 
     public static int add(int a, int b) throws ArithmeticException {
         int result = a + b;
         if (result > MAX_VALUE || result < MIN_VALUE) {
-            throw new ArithmeticException("Overflow");
+            throw new ArithmeticException("Sobreflujo  " + MAX_VALUE + MIN_VALUE);
         }
         return result;
     }
@@ -29,7 +45,7 @@ public class Operaciones {
     public static int subtract(int a, int b) throws ArithmeticException {
         int result = a - b;
         if (result > MAX_VALUE || result < MIN_VALUE) {
-            throw new ArithmeticException("Overflow");
+            throw new ArithmeticException("Sobreflujo");
         }
         return result;
     }
@@ -41,7 +57,7 @@ public class Operaciones {
     public static int[] divide(int a, int b) {
         int quotient = a / b;
         int remainder = a % b;
-        return new int[] { quotient, remainder };
+        return new int[]{quotient, remainder};
     }
 
     public static int leftShift(int a) {
@@ -52,12 +68,11 @@ public class Operaciones {
         return a >> 1;
     }
 
-    public static int zeroExtend(int a, int bits) {
-        return a & ((1 << bits) - 1);
+    public static int zeroExtend(int num, int bits) {
+        return num << bits; 
     }
 
-    public static int signExtend(int a, int bits) {
-        int signBit = 1 << (bits - 1);
-        return (a & (signBit - 1)) - (a & signBit);
+    public static int signExtend(int num, int bits) {
+        return num & ((1 << bits) - 1); 
     }
 }
