@@ -241,8 +241,8 @@ public class CalculadoraUi {
                 case "extensionDeCeros":
                     if (comboBoxModo.getSelectedItem().equals("Binario")) {
                         calculadora.extensionDeCeros();
-                        textOperando1.setText(calculadora.operadorABinario(calculadora.getOperando1()));
-                        textOperando2.setText(calculadora.operadorABinario(calculadora.getOperando2()));
+                        textOperando1.setText(calculadora.operadorAB(textOperando1.getText()));
+                        textOperando2.setText(calculadora.operadorAB(textOperando2.getText()));
                     }
                     break;
                 case "extensionDeSigno":

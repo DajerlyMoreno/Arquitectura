@@ -22,6 +22,10 @@ public class Calculadora {
         return Operaciones.toBinaryString(num, Operaciones.BITS);
     }
 
+    public String operadorAB(String num){
+        return Operaciones.toBinaryS(num, Operaciones.BITS);
+    }
+
     public void sumar() throws ArithmeticException {
         resultadoDecimal = Operaciones.add(operando1, operando2);
         resultadoBinario = Operaciones.toBinaryString(resultadoDecimal, Operaciones.BITS);

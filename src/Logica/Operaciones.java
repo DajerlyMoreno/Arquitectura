@@ -18,6 +18,11 @@ public class Operaciones {
         }
         return binario;
     }
+
+    public static String toBinaryS(String binario, int bits) {
+        binario = String.format("%" + bits + "s", binario).replace(' ', '0');
+        return binario;
+    }
     
 
     public static int fromBinaryString(String binary) {
